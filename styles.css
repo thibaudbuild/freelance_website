@@ -86,10 +86,11 @@ nav {
 
 /* ── HERO ── */
 .hero {
-  min-height: 100vh;
+  min-height: clamp(640px, calc(100vh - 78px), 880px);
   display: grid;
   grid-template-columns: 1fr 340px;
   gap: 0;
+  column-gap: 48px;
   padding: 0 52px;
   align-items: start;
   max-width: 1400px;
@@ -97,7 +98,7 @@ nav {
   position: relative;
 }
 
-.hero-left { padding-top: 120px; padding-bottom: 80px; position: relative; z-index: 1; }
+.hero-left { padding-top: 120px; padding-bottom: 80px; position: relative; z-index: 1; max-width: 760px; }
 
 .hero-tag {
   display: inline-flex;
@@ -232,6 +233,7 @@ h1 .sub-word { color: var(--ink3); }
   animation: rise .7s .4s ease forwards;
   position: relative;
   z-index: 1;
+  justify-self: end;
 }
 .bauhaus-block {
   border: 1px solid var(--border);
@@ -1155,10 +1157,46 @@ footer {
   .reveal { opacity: 1; transform: none; }
 }
 
+/* WIDE DESKTOP */
+@media (min-width: 1600px) {
+  .hero {
+    max-width: 1540px;
+    padding: 0 64px;
+    column-gap: 56px;
+  }
+  .handshake-deco {
+    width: clamp(260px, 23vw, 430px);
+    left: calc(43% - 46px);
+  }
+}
+
+/* TABLETTE / PETIT DESKTOP */
+@media (max-width: 1200px) and (min-width: 901px) {
+  nav { padding: 18px 34px; }
+  .hero {
+    grid-template-columns: minmax(0, 1fr) 300px;
+    padding: 0 34px;
+    column-gap: 32px;
+    min-height: clamp(620px, calc(100vh - 74px), 820px);
+  }
+  .hero-left { padding-top: 104px; padding-bottom: 56px; }
+  h1 { font-size: clamp(48px, 6vw, 78px); }
+  .hero-sub { font-size: 16px; max-width: 500px; }
+  .hero-actions { gap: 14px; }
+  .btn-primary { padding: 14px 24px; }
+  .handshake-deco {
+    width: clamp(180px, 23vw, 300px);
+    left: calc(44% - 92px);
+    top: calc(46% + 18px);
+    opacity: 0.5;
+  }
+  .id-card { padding: 30px 24px; }
+}
+
 /* MOBILE */
 @media (max-width: 900px) {
   nav { padding: 16px 24px; }
-  .hero { grid-template-columns: 1fr; padding: 0 24px; }
+  .hero { grid-template-columns: 1fr; padding: 0 24px; min-height: auto; }
   .hero-right { display: none; }
   .hero-left { padding-top: 72px; padding-bottom: 32px; }
   .handshake-deco {
